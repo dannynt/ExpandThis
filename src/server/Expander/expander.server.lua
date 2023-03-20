@@ -41,8 +41,6 @@ expander.Touched:Connect(function(other)
     end
 end)
 
-print("Aaa")
-
 while expanding do
     expand()
     wait(growTime * growWaitTimeFactor)
