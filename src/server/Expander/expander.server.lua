@@ -66,8 +66,12 @@ expander.Touched:Connect(function(other)
     end
 
     if other.Name == "Bullet" then
+        local explosion = Instance.new("Explosion")
+        explosion.Position = other.Position
+        explosion.Parent = game.Workspace
         other:Destroy()
         decrease(decreaseStrength)
+        
     end
 end)
 
