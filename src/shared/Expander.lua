@@ -1,14 +1,14 @@
 local Expander = {}
 
-local TweenService = game:GetService("TweenService")
+local _tweenService = game:GetService("TweenService")
 
-function Expander.new()
+function Expander.new(growthStrenght, decreaseStrength, sizeChangeTime, sizeChangeTimeFactor)
     local self = setmetatable({}, {__index = Expander})
     self._expander = game.Workspace.Expander
-    self._growthStrength = 15
-    self._decreaseStrength = 15
-    self._sizeChangeTime = 5
-    self._sizeChangeTimeFactor = 1.5
+    self._growthStrength = growthStrenght
+    self._decreaseStrength = decreaseStrength
+    self._sizeChangeTime = sizeChangeTime
+    self._sizeChangeTimeFactor = sizeChangeTimeFactor
     self._targetSize = 0
     self._expander.Size = Vector3.new(0, 0, 0)
     self._active = true
@@ -37,18 +37,18 @@ function Expander:UpdateSize()
         self._sizeTween:Cancel()
     end
     self._tweenInfo = TweenInfo.new(self._sizeChangeTime, Enum.EasingStyle.Quad)
-    self._sizeTween = TweenService:Create(self._expander, self._tweenInfo, {Size = Vector3.new(self._targetSize, self._targetSize, self._targetSize)})
+    self._sizeTween = _tweenService:Create(self._expander, self._tweenInfo, {Size = Vector3.new(self._targetSize, self._targetSize, self._targetSize)})
     self._sizeTween:Play()
 end
 
 function Expander:Expand(sizeChange)
-    print("Expand")
+    -- print("Expand")
     self._targetSize = self._targetSize + sizeChange
     self:UpdateSize()
 end
 
 function Expander:Decrease(sizeChange)
-    print("Decrease")
+    -- print("Decrease")
     self._active = false
     self._targetSize = self._targetSize - sizeChange
     self:UpdateSize()
@@ -72,7 +72,7 @@ function Expander:_killPlayer(player)
 end
 
 function Expander:StartExpandLoop()
-    print("Start expand loop")
+    -- print("Start expand loop")
     while self._active do
         self:Expand(self._growthStrength)
         wait(self._sizeChangeTime * self._sizeChangeTimeFactor)
