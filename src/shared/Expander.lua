@@ -68,7 +68,6 @@ end
 function Expander:_killPlayer(player)
     local humanoid = player.Parent:FindFirstChild("Humanoid")
     humanoid.Health = 0
-    print(humanoid.Parent.Name .. " killed")
 end
 
 function Expander:StartExpandLoop()

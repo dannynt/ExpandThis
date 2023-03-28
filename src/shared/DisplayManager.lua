@@ -1,26 +1,21 @@
 local DisplayManager = {}
 
+local RemoteEvent = game.ReplicatedStorage:WaitForChild("NotificationHandler")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local displayValues = ReplicatedStorage:WaitForChild("DisplayValues")
 
 function DisplayManager.new()
     local self = setmetatable({}, {__index = DisplayManager})
-    self._status = displayValues:WaitForChild("Status")
+    self._status = ReplicatedStorage:WaitForChild("DisplayValues"):WaitForChild("Status")
     self._connections = {}
     return self
 end
 
-function DisplayManager:UpdateStatus(newStatus)
-    self._status.Value = newStatus
- end
-
-function DisplayManager:ObserveClientGUI(playerGui)
-    local function updateText()
-        playerGui.StatusText.Text = self._status.Value
-    end
-
-    return self._status.Changed:Connect(updateText)
+function DisplayManager:Notify(player, newStatus)
+    RemoteEvent:FireClient(player, newStatus)
 end
 
+function DisplayManager:NotifyAllClients(newStatus)
+    RemoteEvent:FireAllClients(newStatus)
+end
 
 return DisplayManager
