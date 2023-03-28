@@ -1,14 +1,13 @@
 local GameLobbyState = {}
 
-function GameLobbyState.new(displayManager, match)
+function GameLobbyState.new(displayManager, game)
     local self = setmetatable({}, {__index = GameLobbyState})
     self._displayManager = displayManager
-    self._match = match
+    self._game = game
     return self
 end
 
 function GameLobbyState:Enter()
-
 end
 
 function GameLobbyState:Exit()
