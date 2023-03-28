@@ -8,16 +8,12 @@ function GameRunningState.new(displayManager, game)
 end
 
 function GameRunningState:Enter()
-    print("Enter running")
     self._game.Time = 0
-    self._game._expander:StartExpandLoop()
-    self._game._spawner:Start()
-
+    self._game:Start()
 end
 
 function GameRunningState:Exit()
-    self._game._expander:Reset()
-    self._game._spawner:Stop()
+    self._game:End()
 end
 
 function GameRunningState:Update()

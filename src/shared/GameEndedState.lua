@@ -9,12 +9,14 @@ end
 
 function GameEndedState:Enter()
     -- TODO: Save player's score.
+    self._game:End()
 end
 
 function GameEndedState:Exit()
 end
 
 function GameEndedState:Update()
+    self._displayManager:NotifyAllClients("Game over!", "")
 end
 
 return GameEndedState
