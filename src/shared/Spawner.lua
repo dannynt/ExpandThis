@@ -10,7 +10,6 @@ end
 
 function Spawner:Clone()
     local randomGroundIdx = math.random(1, #self._spawnPoints)
-    print(randomGroundIdx)
     local bullet = game.ReplicatedStorage.Assets.Bullet
     local clone = bullet:Clone()
     clone.Parent = game.Workspace
