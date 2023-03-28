@@ -1,8 +1,9 @@
 local GameRunningState = {}
 
-function GameRunningState.new(displayManager)
+function GameRunningState.new(displayManager, game)
     local self = setmetatable({}, {__index = GameRunningState})
-    self._displayManager = displayManager;
+    self._displayManager = displayManager
+    self._game = game
     return self
 end
 

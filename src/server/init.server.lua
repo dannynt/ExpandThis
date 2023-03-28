@@ -2,12 +2,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerStorage = game:GetService("ServerStorage")
 local Players = game:GetService("Players")
 
-local Match = require(ReplicatedStorage:WaitForChild("Match")).new()
+local game = require(ReplicatedStorage:WaitForChild("Game")).new()
 -- local roundManager = require(moduleScripts:WaitForChild("RoundManager"))
 -- local gameSettings = require(moduleScripts:WaitForChild("GameSettings"))
 local displayManager = require(ReplicatedStorage:WaitForChild("DisplayManager")).new()
 
-local gameState = require(ReplicatedStorage:WaitForChild("GameLobbyState")).new(displayManager)
+local gameState = require(ReplicatedStorage:WaitForChild("GameLobbyState")).new(displayManager, game)
+gameState:Enter()
 
 Players.PlayerAdded:Connect(function(player)
     print("Player " .. player.Name .. " has joined the game!")

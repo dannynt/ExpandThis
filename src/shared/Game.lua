@@ -1,9 +1,9 @@
-local Match = {}
+local Game = {}
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-function Match.new()
-    local self = setmetatable({}, {__index = Match})
+function Game.new()
+    local self = setmetatable({}, {__index = Game})
     self._active = false
     self._time = 0
     self._expander = require(ReplicatedStorage:WaitForChild("Expander")).new(15, 15, 5, 1.5)
@@ -18,14 +18,14 @@ function Match.new()
     return self
 end
 
-function Match:Start()
+function Game:Start()
     self._active = true
     self._time = 0
     coroutine.resume(self._spawnerCoroutine)
     coroutine.resume(self._expanderCoroutine)
 end
 
-function Match:End()
+function Game:End()
     self._active = false
     coroutine.yield(self._spawnerCoroutine)
     coroutine.yield(self._expanderCoroutine)
@@ -33,4 +33,4 @@ function Match:End()
     self._spawner:Stop()
 end
 
-return Match
+return Game
