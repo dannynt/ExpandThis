@@ -11,7 +11,7 @@ end
 
 function StateManager:EnterState(state)
     if (self.state ~= nil) then self._state:Exit() end
-    self._state = require(ReplicatedStorage:WaitForChild(state)).new(displayManager, game)
+    self._state = require(ReplicatedStorage:WaitForChild(state)).new(self._displayManager, game)
     self._state:Enter()
 end
 
