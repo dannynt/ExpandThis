@@ -10,12 +10,12 @@ function DisplayManager.new()
     return self
 end
 
-function DisplayManager:Notify(player, newStatus)
-    RemoteEvent:FireClient(player, newStatus)
+function DisplayManager:Notify(player, permanentText, notificationText)
+    RemoteEvent:FireClient(player, permanentText, notificationText)
 end
 
-function DisplayManager:NotifyAllClients(newStatus)
-    RemoteEvent:FireAllClients(newStatus)
+function DisplayManager:NotifyAllClients(permanentText, notificationText)
+    RemoteEvent:FireAllClients(permanentText, notificationText)
 end
 
 return DisplayManager

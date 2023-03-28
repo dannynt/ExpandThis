@@ -20,9 +20,9 @@ local function onPlayerAdded(player)
     player.CharacterAdded:Connect(onCharacterAdded)
 end
 
+Players.PlayerAdded:Connect(onPlayerAdded)
 gameState._state:Enter("GameLobbyState")
 
-Players.PlayerAdded:Connect(onPlayerAdded)
 
 while true do
     gameState._state:Update()
