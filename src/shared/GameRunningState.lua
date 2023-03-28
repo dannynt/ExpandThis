@@ -8,15 +8,21 @@ function GameRunningState.new(displayManager, game)
 end
 
 function GameRunningState:Enter()
+    print("Enter running")
     self._game.Time = 0
+    self._game._expander:StartExpandLoop()
+    self._game._spawner:Start()
+
 end
 
 function GameRunningState:Exit()
+    self._game._expander:Reset()
+    self._game._spawner:Stop()
 end
 
 function GameRunningState:Update()
     self._game.Time = self._game.Time + 1
-    self._displayManager:UpdateStatus("Time survived: " .. self._secondsToMinutesAndSeconds(self._game.Time))
+    self._displayManager:NotifyAllClients("Time survived: " .. self._secondsToMinutesAndSeconds(self._game.Time), "")
 end
 
 function GameRunningState._secondsToMinutesAndSeconds(seconds)
