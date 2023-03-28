@@ -16,4 +16,5 @@ end)
 
 while true do
     gameState._state:Update()
+    wait(1)
 end
