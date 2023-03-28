@@ -11,8 +11,19 @@ local gameState = require(ReplicatedStorage:WaitForChild("StateManager")).new("G
 Players.PlayerAdded:Connect(function(player)
     print("Player " .. player.Name .. " has joined the game!")
     local playerGui = player:WaitForChild("PlayerGui"):WaitForChild("ScreenGui")
-    displayManager:ObserveClientGUI(playerGui)
+    local connection = displayManager:ObserveClientGUI(playerGui)
+
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        local humanoid = player.Character.Humanoid
+
+        humanoid.Died:Connect(function()
+            print(player.Name .. " has died!")
+            connection:Disconnect()
+        end)
+    end
 end)
+
+-- Handle when players respwan events
 
 while true do
     gameState._state:Update()

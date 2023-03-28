@@ -16,7 +16,13 @@ end
 
 function GameLobbyState:Update()
     self._game.Time = self._game.Time + 1
-    self._displayManager:UpdateStatus("Time survived: " .. self._game.Time)
+    self._displayManager:UpdateStatus("Time survived: " .. self._secondsToMinutesAndSeconds(self._game.Time))
 end
+
+function GameLobbyState._secondsToMinutesAndSeconds(seconds)
+    local minutes = math.floor(seconds / 60)
+    local secondsRemainder = seconds % 60
+    return string.format("%02d:%02d", minutes, secondsRemainder)
+  end
 
 return GameLobbyState

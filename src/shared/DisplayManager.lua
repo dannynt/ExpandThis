@@ -6,6 +6,7 @@ local displayValues = ReplicatedStorage:WaitForChild("DisplayValues")
 function DisplayManager.new()
     local self = setmetatable({}, {__index = DisplayManager})
     self._status = displayValues:WaitForChild("Status")
+    self._connections = {}
     return self
 end
 
@@ -18,7 +19,7 @@ function DisplayManager:ObserveClientGUI(playerGui)
         playerGui.StatusText.Text = self._status.Value
     end
 
-    self._status.Changed:Connect(updateText)
+    return self._status.Changed:Connect(updateText)
 end
 
 

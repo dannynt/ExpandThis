@@ -6,6 +6,8 @@ function Game.new()
     local self = setmetatable({}, {__index = Game})
     self._active = false
     self.Time = 0
+    self.PlayersAlive = 0
+    self.PlayersWaiting = 0
     self._expander = require(ReplicatedStorage:WaitForChild("Expander")).new(15, 15, 5, 1.5)
     self._spawner = require(ReplicatedStorage:WaitForChild("Spawner")).new(2)
     self._spawnerCoroutine = coroutine.create(function()
