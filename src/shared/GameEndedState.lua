@@ -8,7 +8,7 @@ function GameEndedState.new(displayManager, game)
 end
 
 function GameEndedState:Enter()
-    -- TODO: Save player's score.
+    self._displayManager:NotifyAllClients("Game over!", "It is over")
     self._game:End()
 end
 
@@ -18,5 +18,6 @@ end
 function GameEndedState:Update()
     self._displayManager:NotifyAllClients("Game over!", "")
 end
+
 
 return GameEndedState
