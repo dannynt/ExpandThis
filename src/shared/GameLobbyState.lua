@@ -9,7 +9,6 @@ function GameLobbyState.new(displayManager, game)
 end
 
 function GameLobbyState:Enter()
-    print("Entered GameLobbyState")
 end
 
 function GameLobbyState:Exit()
