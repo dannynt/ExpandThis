@@ -13,13 +13,8 @@ Players.PlayerAdded:Connect(function(player)
     print("Player " .. player.Name .. " has joined the game!")
     local playerGui = player:WaitForChild("PlayerGui"):WaitForChild("ScreenGui")
     displayManager:ObserveClientGUI(playerGui)
-    print(Players)
 end)
 
 while true do
     gameState:Update()
-    displayManager:UpdateStatus("Time: " .. seconds)
-    wait(1)
 end
-
--- Match:Start()

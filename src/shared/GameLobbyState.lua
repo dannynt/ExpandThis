@@ -6,7 +6,6 @@ function GameLobbyState.new(displayManager)
     return self
 end
 
-
 function GameLobbyState:Enter()
 end
 
