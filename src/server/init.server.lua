@@ -5,6 +5,8 @@ local myGame = require(ReplicatedStorage:WaitForChild("Game")).new()
 local displayManager = require(ReplicatedStorage:WaitForChild("DisplayManager")).new()
 local gameState = require(ReplicatedStorage:WaitForChild("StateManager")).new("GameLobbyState", myGame, displayManager)
 
+Players.CharacterAutoLoads = false
+
 local function onPlayerAdded(player)
     print(player.Name .. " connected")
     
