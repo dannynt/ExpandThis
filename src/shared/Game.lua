@@ -5,7 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 function Game.new()
     local self = setmetatable({}, {__index = Game})
     self._active = false
-    self._time = 0
+    self.Time = 0
     self._expander = require(ReplicatedStorage:WaitForChild("Expander")).new(15, 15, 5, 1.5)
     self._spawner = require(ReplicatedStorage:WaitForChild("Spawner")).new(2)
     self._spawnerCoroutine = coroutine.create(function()
@@ -20,7 +20,7 @@ end
 
 function Game:Start()
     self._active = true
-    self._time = 0
+    self.Time = 0
     coroutine.resume(self._spawnerCoroutine)
     coroutine.resume(self._expanderCoroutine)
 end
