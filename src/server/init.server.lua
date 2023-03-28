@@ -15,7 +15,7 @@ local function onPlayerAdded(player)
         print(player.Name .. " spawned")
         myGame.PlayersAlive = myGame.PlayersAlive + 1
         local humanoid = character:WaitForChild("Humanoid")
-        wait(2)
+        wait(10)
         if (myGame.PlayersAlive >= 1) then
             gameState:EnterState("GameRunningState")
         end

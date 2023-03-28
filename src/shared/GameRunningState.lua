@@ -8,6 +8,7 @@ function GameRunningState.new(displayManager, game)
 end
 
 function GameRunningState:Enter()
+    self._displayManager:NotifyAllClients("Danger Zone Expanding!", "Danger Zone Expanding!")
     self._game.Time = 0
     self._game:Start()
 end
@@ -18,7 +19,9 @@ end
 
 function GameRunningState:Update()
     self._game.Time = self._game.Time + 1
-    self._displayManager:NotifyAllClients("Time survived: " .. self._secondsToMinutesAndSeconds(self._game.Time), "")
+    if self._game.Time > 2 then
+        self._displayManager:NotifyAllClients("Time survived: " .. self._secondsToMinutesAndSeconds(self._game.Time), "")
+    end
 end
 
 function GameRunningState._secondsToMinutesAndSeconds(seconds)
